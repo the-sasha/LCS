@@ -15,7 +15,7 @@ class Dice(object):
 
     def roll(self):
         """returns result of rolling xDy + a modifier"""
-        unmod =0
+        unmod = 0
         for x in range(0, self.count):
             r = randint(1, self.sides)
             unmod += r
