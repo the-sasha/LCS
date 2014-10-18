@@ -16,10 +16,10 @@ class Attribute(object):
         """makes dice to use in attribute"""
         parts = self.xdy.split('d')
         parts_two = parts[1].split('+')
-        c = int(parts[0]) 
-        s = int(parts_two[0]) 
-        m = int(parts_two[1]) 
-        self.att_dice = Dice(c, s, m)
+        count = int(parts[0]) 
+        sides = int(parts_two[0]) 
+        modifier = int(parts_two[1]) 
+        self.att_dice = Dice(count, sides, modifier)
         return self.att_dice
 
     def display_result(self):
@@ -29,3 +29,5 @@ class Attribute(object):
         print ("\n%s roll: %d" % (self.name, roll_result))
         return roll_result
     
+# TODO: results that prompt another result (like attack then damage),
+# TODO: trackable attributes, like damage, xp
