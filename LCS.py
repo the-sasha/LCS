@@ -2,12 +2,13 @@
 # Lazy Character Sheet
 
     # A command line dice-roller with named and stored rolls, grouped by character
-    # Dice, Attributes, and CharacterSheet are all distinct files for multiuse
+    # Dice and CharacterSheet are distinct files for multiuse
 
 from CharacterSheet import CharacterSheet
 import shelve
 import os.path
 
+# Mostly troubleshooting
 
 def create_sheet(name):
     """Creates a new file in LCS folder for a new character"""
@@ -133,7 +134,7 @@ else:
             your_char = create_sheet(name)
             
         elif task == 'O':
-            ame = input("What character do you want to use? ")
+            name = input("What character do you want to use? ")
             your_char = open_sheet(name)
 
 
@@ -144,10 +145,10 @@ next_task = input("\nDo you want to add rolls [a], use rolls [u], or quit[q]? ")
 next_task = next_task.upper()
 while next_task != 'Q':
     if next_task == 'A':
-        sheet.store_attributes()
+        sheet.store_dice()
 
     elif next_task == 'U':
-        sheet.use_attributes()
+        sheet.use_dice()
 
     else:
         while next_task != 'A' and next_task != 'U':
@@ -155,10 +156,10 @@ while next_task != 'Q':
             next_task = next_task.upper()
 
             if next_task == 'A':
-                sheet.store_attributes()
+                sheet.store_dice()
 
             elif next_task == 'U':
-                sheet.use_attributes()
+                sheet.use_dice()
     next_task = input("\nDo you want to add rolls [a], use rolls [u], or quit[q]? ")
     next_task = next_task.upper()
 
