@@ -4,14 +4,14 @@
     # Making and using a character
 
 import shelve
-from Attributes import Attribute
+from  Dice import Dice
 
 
 class CharacterSheet():
     def __init__(self, sheet):
         self.your_char = sheet
 
-    def store_attributes(self):
+    def store_dice(self):
         """Stores rolls for future use in a dictionary file"""
         print ("\nRolls can be anything you need to store for your character:")
         print ("will save, strength, attack, greatsword, hack & slash, hard, etc.")
@@ -36,7 +36,7 @@ class CharacterSheet():
                     print ("Please try again. Enter your roll in the form: #d#+# (or xdy+z, like 1d20+0)\n")
             new_att = input("Please enter the name of the roll you want to store (Q to quit): ")   
 
-    def use_attributes(self):
+    def use_dice(self):
         """Allows users to select from stored rolls and get results"""
         if len(self.your_char) < 1:
             print ("\nYou don't have any stored rolls. Please add some rolls to use.")
@@ -51,14 +51,8 @@ class CharacterSheet():
 
             while toss_the_dice != "Q" and toss_the_dice != "q":
                 if toss_the_dice in self.your_char:
-                    dice_toss = Attribute(toss_the_dice, self.your_char[toss_the_dice])
-                    dice_toss.display_result()
+                    dice_toss = Dice(toss_the_dice, self.your_char[toss_the_dice])
+                    dice_toss.roll()
                 else:
                     print ("You don't have a roll for %s" % toss_the_dice)
                 toss_the_dice = input("\nWhat roll do you want? (Q to quit) ")
-
-
-
-
-
-
